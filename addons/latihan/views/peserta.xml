@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Action Window for Training Session -->
+        <record id="training_session_action" model="ir.actions.act_window">
+            <field name="name">Sesi Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Klik untuk membuat sesi training baru.
+                </p>
+            </field>
+        </record>
+
+        <!-- Peserta Tree View -->
+        <record id="peserta_view_tree" model="ir.ui.view">
+            <field name="name">peserta.view.tree</field>
+            <field name="model">peserta</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="jenis_kelamin"/>
+                    <field name="street"/>
+                    <field name="mobile"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Peserta Form View -->
+        <record id="peserta_view_form" model="ir.ui.view">
+            <field name="name">peserta.view.form</field>
+            <field name="model">peserta</field>
+            <field name="arch" type="xml">
+                <form string="Form Peserta">
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_avatar"/>
+                        <group name="identitas_peserta" string="Identitas Peserta">
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="jenis_kelamin" required="1"/>
+                                <field name="email" required="1"/>
+                            </group>
+                            <group>
+                                <field name="tmp_lahir" required="1"/>
+                                <field name="tgl_lahir" required="1"/>
+                                <field name="mobile" required="1"/>
+                            </group>
+                        </group>
+                        <group name="tempat_tinggal" string="Tempat Tinggal Peserta">
+                            <group colspan="4">
+                                <field name="street"/>
+                            </group>
+                            <group>
+                                <field name="propinsi_id"/>
+                                <field name="kota_id" domain="[('propinsi_id','=',propinsi_id)]"/>
+                            </group>
+                            <group>
+                                <field name="kecamatan_id" domain="[('kota_id','=',kota_id)]"/>
+                                <field name="desa_id" domain="[('kecamatan_id','=',kecamatan_id)]"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="pendidikan"/>
+                                <field name="is_menikah"/>
+                            </group>
+                            <group>
+                                <field name="pekerjaan"/>
+                            </group>
+                        </group>
+                        <group name="pasangan" string="Identitas Pasangan" attrs="{'invisible':[('is_menikah','=',False)]}">
+                            <group>
+                                <field name="nama_pasangan"/>
+                            </group>
+                            <group>
+                                <field name="hp_pasangan"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Peserta Action Window -->
+        <record id="peserta_action" model="ir.actions.act_window">
+            <field name="name">Data Peserta</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">peserta</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Buat Data Peserta Baru
+                </p>
+                <p>
+                    Anda bisa mengelola data peserta di sini.
+                </p>
+            </field>
+        </record>
+
+        <!-- Peserta Menu Item -->
+        <menuitem id="latihan_menu_root" name="SMK TELKOM" sequence="10"/>
+        <menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="latihan_menu_root" sequence="50"/>
+        <menuitem id="peserta_menu" name="Peserta" parent="master_menu_categ" action="peserta_action" sequence="60"/>
+
+    </data>
+</odoo>

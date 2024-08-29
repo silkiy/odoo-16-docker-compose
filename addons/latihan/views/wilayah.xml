@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View for Propinsi -->
+        <record id="view_propinsi_tree" model="ir.ui.view">
+            <field name="name">view.propinsi.tree</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="singkatan"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Propinsi -->
+        <record id="view_propinsi_form" model="ir.ui.view">
+            <field name="name">view.propinsi.form</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <form string="Propinsi">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="singkatan"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Kota">
+                                <field name="kota_ids">
+                                    <tree>
+                                        <field name="kode"/>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for Kota -->
+        <record id="view_kota_tree" model="ir.ui.view">
+            <field name="name">view.kota.tree</field>
+            <field name="model">kota</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="singkatan"/>
+                    <field name="propinsi_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Kota -->
+        <record id="view_kota_form" model="ir.ui.view">
+            <field name="name">view.kota.form</field>
+            <field name="model">kota</field>
+            <field name="arch" type="xml">
+                <form string="Kota">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="singkatan"/>
+                            <field name="description"/>
+                            <field name="propinsi_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Kecamatan">
+                                <field name="kecamatan_ids">
+                                    <tree>
+                                        <field name="kode"/>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for Kecamatan -->
+        <record id="view_kecamatan_tree" model="ir.ui.view">
+            <field name="name">view.kecamatan.tree</field>
+            <field name="model">kecamatan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="kota_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Kecamatan -->
+        <record id="view_kecamatan_form" model="ir.ui.view">
+            <field name="name">view.kecamatan.form</field>
+            <field name="model">kecamatan</field>
+            <field name="arch" type="xml">
+                <form string="Kecamatan">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="kota_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Desa/Kelurahan">
+                                <field name="desa_ids">
+                                    <tree>
+                                        <field name="kode"/>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for Desa -->
+        <record id="view_desa_tree" model="ir.ui.view">
+            <field name="name">view.desa.tree</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="kecamatan_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Desa -->
+        <record id="view_desa_form" model="ir.ui.view">
+            <field name="name">view.desa.form</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <form string="Desa/Kelurahan">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="kecamatan_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Propinsi -->
+        <record id="action_propinsi" model="ir.actions.act_window">
+            <field name="name">Propinsi</field>
+            <field name="res_model">propinsi</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action for Kota -->
+        <record id="action_kota" model="ir.actions.act_window">
+            <field name="name">Kota</field>
+            <field name="res_model">kota</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action for Kecamatan -->
+        <record id="action_kecamatan" model="ir.actions.act_window">
+            <field name="name">Kecamatan</field>
+            <field name="res_model">kecamatan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action for Desa -->
+        <record id="action_desa" model="ir.actions.act_window">
+            <field name="name">Desa/Kelurahan</field>
+            <field name="res_model">desa</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Structure -->
+        <!-- <menuitem id="menu_wilayah_root" name="Wilayah" parent="latihan_menu_root" sequence="1"/> -->
+        <menuitem id="menu_wilayah_propinsi" name="Propinsi" parent="master_menu_categ" action="action_propinsi" sequence="10"/>
+        <menuitem id="menu_wilayah_kota" name="Kota" parent="master_menu_categ" action="action_kota" sequence="20"/>
+        <menuitem id="menu_wilayah_kecamatan" name="Kecamatan" parent="master_menu_categ" action="action_kecamatan" sequence="30"/>
+        <menuitem id="menu_wilayah_desa" name="Desa/Kelurahan" parent="master_menu_categ" action="action_desa" sequence="40"/>
+
+    </data>
+</odoo>

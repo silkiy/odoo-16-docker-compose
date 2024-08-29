@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- training.session form view -->
+        <record id="training_session_view_form" model="ir.ui.view">
+            <field name="name">training.session.view.form</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <form string="Training Session">
+                    <header>
+                        <button string="Proses" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Selesai" name="action_done" type="object" states="confirm"/>
+                        <button string="Reset" name="action_draft" type="object" states="confirm,done"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                        <group string="Informasi Kursus">
+                            <group>
+                                <field name="start_date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="course_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                            <group>
+                                <field name="duration" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="seats" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="peserta_ids" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Peserta">
+                                <field name="peserta_ids">
+                                    <tree>
+                                        <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                        <field name="jenis_kelamin" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                        <field name="mobile" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <!-- Group for Instruktur Data -->
+                        <group name="instruktur" string="Data Instruktur">
+                            <group>
+                                <field name="instruktur_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="jenis_kelamin" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                            <group>
+                                <field name="no_hp" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="email" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}" />
+                </form>
+            </field>
+        </record>
+
+        <!-- training.course form view -->
+        <record id="training_course_view_form" model="ir.ui.view">
+            <field name="name">training.course.view.form</field>
+            <field name="model">training.course</field>
+            <field name="arch" type="xml">
+                <form string="Training Course">
+                    <sheet>
+                        <group string="Informasi Kursus">
+                            <group>
+                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="user_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="session_line" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                            <group>
+                                <field name="instruktur_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Window -->
+        <record id="training_session_action" model="ir.actions.act_window">
+            <field name="name">Sesi Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item untuk training.session -->
+        <menuitem id="latihan_menu_root" name="SMK TELKOM" sequence="1"/>
+        <menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="latihan_menu_root" sequence="80"/>
+        <menuitem id="training_session_menu" name="Sesi Training" parent="latihan_menu_categ" action="training_session_action" sequence="90"/>
+    </data>
+</odoo>
