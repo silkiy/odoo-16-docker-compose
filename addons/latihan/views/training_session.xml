@@ -16,23 +16,23 @@
                     <sheet>
                         <group string="Informasi Kursus">
                             <group>
-                                <field name="start_date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="course_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="start_date"/>
+                                <field name="name"/>
+                                <field name="course_id"/>
                             </group>
                             <group>
-                                <field name="duration" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="seats" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="peserta_ids" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="duration"/>
+                                <field name="seats"/>
+                                <field name="peserta_ids"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="Peserta">
                                 <field name="peserta_ids">
                                     <tree>
-                                        <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                        <field name="jenis_kelamin" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                        <field name="mobile" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                        <field name="name"/>
+                                        <field name="jenis_kelamin"/>
+                                        <field name="mobile"/>
                                     </tree>
                                 </field>
                             </page>
@@ -40,16 +40,15 @@
                         <!-- Group for Instruktur Data -->
                         <group name="instruktur" string="Data Instruktur">
                             <group>
-                                <field name="instruktur_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="jenis_kelamin" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="instruktur_id"/>
+                                <field name="jenis_kelamin"/>
                             </group>
                             <group>
-                                <field name="no_hp" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="email" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="no_hp"/>
+                                <field name="email"/>
                             </group>
                         </group>
                     </sheet>
-                    <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}" />
                 </form>
             </field>
         </record>
@@ -63,13 +62,13 @@
                     <sheet>
                         <group string="Informasi Kursus">
                             <group>
-                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="user_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
-                                <field name="session_line" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="user_id"/>
+                                <field name="session_line"/>
                             </group>
                             <group>
-                                <field name="instruktur_id" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+                                <field name="instruktur_id"/>
                             </group>
                         </group>
                     </sheet>
@@ -96,6 +95,6 @@
         <!-- Menu Item untuk training.session -->
         <menuitem id="latihan_menu_root" name="SMK TELKOM" sequence="1"/>
         <menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="latihan_menu_root" sequence="80"/>
-        <menuitem id="training_session_menu" name="Sesi Training" parent="latihan_menu_categ" action="training_session_action" sequence="90"/>
+        <menuitem id="training_session_menu" name="Sesi Training" parent="master_menu_categ" action="training_session_action" sequence="90"/>
     </data>
 </odoo>
