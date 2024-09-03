@@ -3,6 +3,7 @@ from odoo import models, fields, api
 class TrainingCourse(models.Model):
     _name = 'training.course'
     _description = 'Training Course'
+    
 
     name = fields.Char(string='Course Name', required=True)
     description = fields.Text(string='Description')
@@ -28,6 +29,7 @@ class TrainingSession(models.Model):
     seats = fields.Integer(string='Seats', required=True, tracking=True)
     peserta_ids = fields.Many2many(comodel_name='peserta', string='Peserta', tracking=True)
     instruktur_id = fields.Many2one(comodel_name='res.partner', string='Instruktur', tracking=True)
+
     
     
     no_hp = fields.Char(string='No HP', related='instruktur_id.mobile', tracking=True)

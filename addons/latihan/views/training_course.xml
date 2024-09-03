@@ -58,6 +58,7 @@
                             </page>
                         </notebook>
                     </sheet>
+
                     <!-- Adding the web_ribbon widget here -->
                     <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible': [('state', '!=', 'done')]}" />
                 </form>
@@ -84,3 +85,5 @@
 
     </data>
 </odoo>
+
+
