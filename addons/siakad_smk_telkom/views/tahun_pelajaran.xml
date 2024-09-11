@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- Form view for tahun.pelajaran -->
+        <record id="view_tahun_pelajaran_form" model="ir.ui.view">
+            <field name="name">tahun.pelajaran.form</field>
+            <field name="model">tahun.pelajaran</field>
+            <field name="arch" type="xml">
+                <form string="Tahun Pelajaran">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="deskripsi"/>
+                            <field name="is_active"/>
+                        </group>
+                    </sheet>
+                    <footer>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for tahun.pelajaran -->
+        <record id="view_tahun_pelajaran_tree" model="ir.ui.view">
+            <field name="name">tahun.pelajaran.tree</field>
+            <field name="model">tahun.pelajaran</field>
+            <field name="arch" type="xml">
+                <tree string="Tahun Pelajaran">
+                    <field name="name"/>
+                    <field name="deskripsi"/>
+                    <field name="is_active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the tahun.pelajaran form -->
+        <record id="action_tahun_pelajaran" model="ir.actions.act_window">
+            <field name="name">Tahun Pelajaran</field>
+            <field name="res_model">tahun.pelajaran</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="master_menu_categ" name="manajemen" parent="siakad_menu_root" sequence="1"/>
+        <menuitem id="tahun_pelajaran_menu_act" name="Tahun Pelajaran" parent="master_menu_categ" action="action_tahun_pelajaran" sequence="1"/>
+
+    </data>
+</odoo>

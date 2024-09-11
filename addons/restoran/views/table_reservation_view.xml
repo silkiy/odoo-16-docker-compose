@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_table_reservation_tree" model="ir.ui.view">
+        <field name="name">restaurant.table.reservation.tree</field>
+        <field name="model">restaurant.table.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Table Reservations">
+                <field name="table_number"/>
+                <field name="customer_name"/>
+                <field name="reservation_time"/>
+                <field name="guests"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_table_reservation_form" model="ir.ui.view">
+        <field name="name">restaurant.table.reservation.form</field>
+        <field name="model">restaurant.table.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Table Reservation">
+                <sheet>
+                    <group>
+                        <field name="table_number"/>
+                        <field name="customer_name"/>
+                        <field name="reservation_time"/>
+                        <field name="guests"/>
+                        <field name="status" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_seat_customer" type="object" string="Seat Customer" states="reserved" class="btn-primary"/>
+                        <button name="action_cancel_reservation" type="object" string="Cancel Reservation" states="reserved" class="btn-secondary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

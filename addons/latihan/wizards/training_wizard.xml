@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+
+        <!-- wizard.training form view for single session -->
+        <record id="wizard_training_view_form" model="ir.ui.view">
+            <field name="name">wizard.training.view.form</field>
+            <field name="model">wizard.training</field>
+            <field name="arch" type="xml">
+                <form string="Tambah Peserta ke Sesi Training">
+                    <group>
+                        <field name="session_id"/>
+                        <field name="peserta_ids"/>
+                    </group>
+                    <footer>
+                        <button name="tambah_peserta" string="Tambah Peserta" type="object" confirm="Apakah Anda yakin akan menambah Peserta pada Sesi ini?" class="btn-primary"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- wizard.training form view for multiple sessions -->
+        <record id="wizard_training_view_form_list" model="ir.ui.view">
+            <field name="name">wizard.training.view.form.list</field>
+            <field name="model">wizard.training</field>
+            <field name="arch" type="xml">
+                <form string="Tambah Banyak Peserta">
+                    <group>
+                        <field name="session_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                        <field name="peserta_ids"/>
+                    </group>
+                    <footer>
+                        <button name="tambah_banyak_peserta" string="Tambah Banyak Peserta" type="object" confirm="Apakah Anda yakin akan menambah Peserta pada semua Sesi yang dipilih ini?" class="btn-primary"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk membuka wizard (single session) -->
+        <record id="wizard_training_action" model="ir.actions.act_window">
+            <field name="name">Tambah Peserta</field>
+            <field name="res_model">wizard.training</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_training_view_form"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_training_session"/>
+            <field name="binding_view_types">form</field>
+        </record>
+
+        <!-- Action untuk membuka wizard (multiple sessions) -->
+        <record id="wizard_training_list_action" model="ir.actions.act_window">
+            <field name="name">Tambah Banyak Peserta</field>
+            <field name="res_model">wizard.training</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_training_view_form_list"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_training_session"/>
+            <field name="binding_view_types">form</field>
+        </record>
+
+        <!-- Menu Item untuk wizard -->
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="wizard_menu_act" name="wizard" parent="latihan_menu_root" action="wizard_training_action" sequence="1"/>
+        <menuitem id="wizard_training_list_menu_act" name="wizard training" parent="latihan_menu_root" action="wizard_training_list_action" sequence="2"/>
+
+    </data>
+</odoo>

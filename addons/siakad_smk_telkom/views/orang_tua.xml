@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+
+        <!-- Form view for orang_tua -->
+        <record id="view_orang_tua_form" model="ir.ui.view">
+            <field name="name">orang.tua.form</field>
+            <field name="model">orang.tua</field>
+            <field name="arch" type="xml">
+                <form string="Orang Tua">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama"/>
+                            <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                            <field name="tempat_lahir" string="Tempat Lahir"/>
+                            <field name="tanggal_lahir" string="Tanggal Lahir"/>
+                            <field name="alamat" string="Alamat"/>
+                            <field name="no_hp" string="No HP"/>
+                            <field name="email" string="Email"/>
+                        </group>
+                        <notebook>
+                            <page string="Anak">
+                                <field name="anak_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" string="Nama Anak"/>
+                                        <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                                        <field name="no_hp" string="No HP"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for orang_tua -->
+        <record id="view_orang_tua_tree" model="ir.ui.view">
+            <field name="name">orang.tua.tree</field>
+            <field name="model">orang.tua</field>
+            <field name="arch" type="xml">
+                <tree string="Orang Tua">
+                    <field name="name" string="Nama"/>
+                    <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                    <field name="no_hp" string="No HP"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the orang_tua form -->
+        <record id="action_orang_tua" model="ir.actions.act_window">
+            <field name="name">Orang Tua</field>
+            <field name="res_model">orang.tua</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_orang_tua_tree"/>
+        </record>
+
+        <!-- Menu item for orang_tua -->
+        <menuitem id="orang_tua_menu_act" name="Orang Tua" parent="master_menu_categ" action="action_orang_tua" sequence="5"/>
+
+    </data>
+</odoo>

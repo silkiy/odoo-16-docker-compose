@@ -34,6 +34,8 @@
         'views/wilayah.xml',
         'views/peserta.xml',
         'views/training_session.xml',
+        'views/hobby.xml',
+        "wizards/training_wizard.xml",
         
     ],
     # only loaded in demonstration mode

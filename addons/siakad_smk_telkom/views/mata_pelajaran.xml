@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <!-- Form view for mata_pelajaran -->
+        <record id="view_mata_pelajaran_form" model="ir.ui.view">
+            <field name="name">mata.pelajaran.form</field>
+            <field name="model">mata.pelajaran</field>
+            <field name="arch" type="xml">
+                <form string="Mata Pelajaran">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama Mata Pelajaran"/>
+                            <field name="jadwal_pelajaran" string="Jadwal Pelajaran"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for mata_pelajaran -->
+        <record id="view_mata_pelajaran_tree" model="ir.ui.view">
+            <field name="name">mata.pelajaran.tree</field>
+            <field name="model">mata.pelajaran</field>
+            <field name="arch" type="xml">
+                <tree string="Mata Pelajaran">
+                    <field name="name" string="Nama Mata Pelajaran"/>
+                    <field name="jadwal_pelajaran" string="Jadwal Pelajaran"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the mata_pelajaran form -->
+        <record id="action_mata_pelajaran" model="ir.actions.act_window">
+            <field name="name">Mata Pelajaran</field>
+            <field name="res_model">mata.pelajaran</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_mata_pelajaran_tree"/>
+        </record>
+
+        <!-- Menu item for mata_pelajaran -->
+        <menuitem id="mata_pelajaran_menu_act" name="Mata Pelajaran" parent="master_menu_categ" action="action_mata_pelajaran" sequence="7"/>
+
+    </data>
+</odoo>

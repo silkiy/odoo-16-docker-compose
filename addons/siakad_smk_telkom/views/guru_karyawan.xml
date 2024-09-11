@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <!-- Form view for guru_karyawan -->
+        <record id="view_guru_karyawan_form" model="ir.ui.view">
+            <field name="name">guru.karyawan.form</field>
+            <field name="model">guru.karyawan</field>
+            <field name="arch" type="xml">
+                <form string="Guru/Karyawan">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama"/>
+                            <field name="nip" string="NIP"/>
+                            <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                            <field name="tempat_lahir" string="Tempat Lahir"/>
+                            <field name="tanggal_lahir" string="Tanggal Lahir"/>
+                            <field name="alamat" string="Alamat"/>
+                            <field name="no_hp" string="No HP"/>
+                            <field name="email" string="Email"/>
+                            <field name="jenis_pegawai" string="Jenis Pegawai"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for guru_karyawan -->
+        <record id="view_guru_karyawan_tree" model="ir.ui.view">
+            <field name="name">guru.karyawan.tree</field>
+            <field name="model">guru.karyawan</field>
+            <field name="arch" type="xml">
+                <tree string="Guru/Karyawan">
+                    <field name="name" string="Nama"/>
+                    <field name="nip" string="NIP"/>
+                    <field name="jenis_pegawai" string="Jenis Pegawai"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the guru_karyawan form -->
+        <record id="action_guru_karyawan" model="ir.actions.act_window">
+            <field name="name">Guru/Karyawan</field>
+            <field name="res_model">guru.karyawan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_guru_karyawan_tree"/>
+        </record>
+
+        <!-- Menu item for guru_karyawan -->
+        <menuitem id="guru_karyawan_menu_act" name="Guru/Karyawan" parent="master_menu_categ" action="action_guru_karyawan" sequence="6"/>
+
+    </data>
+</odoo>

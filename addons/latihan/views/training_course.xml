@@ -65,6 +65,75 @@
             </field>
         </record>
 
+        <!-- training.session tree view -->
+        <record id="training_session_view_tree" model="ir.ui.view">
+            <field name="name">training.session.view.tree</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="jml_peserta==0">
+                    <!-- Add your fields here -->
+                    <field name="start_date"/>
+                    <field name="name"/>
+                    <field name="duration"/>
+                    <field name="seats"/>
+                    <field name="instruktur_id"/>
+                    <field name="jml_peserta"/>
+                </tree>
+            </field>
+        </record>
+        <!-- training.session form view -->
+        <record id="training_session_view_form" model="ir.ui.view">
+            <field name="name">training.session.view.form</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button string="Proses" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Selesai" name="action_done" type="object"  states="confirm"/>
+                        <button string="Reset" name="action_draft" type="object"  states="confirm,done"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                    <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}" />
+                        <group string="informasi_kursus">
+                            <!-- Add your fields here -->
+                            <group>
+                                <field name="start_date" attrs="{'readonly' : [('state','!=','draft')]}"/>
+                                <field name="name"/>
+                                <field name="course_id"/>
+                            </group>
+                        </group>
+                        <group name="instruktur" string="Data Instruktur">
+                            <group>
+                                <field name="instruktur_id"/>
+                                <field name="jenis_kelamin"/>
+                            </group>
+                            <group>
+                                <field name="no_hp"/>
+                                <field name="email"/>
+                            </group>                   
+                        </group>
+                        <notebook>
+                            <page name="peserta">
+                            <field name="peserta_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="jenis_kelamin"/>
+                                    <field name="mobile"/>
+                                </tree>
+                            </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
         <!-- training.course action window -->
         <record id="training_course_action" model="ir.actions.act_window">
             <field name="name">Training Courses</field>

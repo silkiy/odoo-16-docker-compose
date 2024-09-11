@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="restoran.list">
+      <field name="name">Restoran list</field>
+      <field name="model">restoran.restoran</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="restoran.action_window">
+      <field name="name">Restoran window</field>
+      <field name="res_model">restoran.restoran</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="restoran.action_server">
+      <field name="name">Restoran server</field>
+      <field name="model_id" ref="model_restoran_restoran"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="Restoran" id="restoran.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="restoran.menu_1" parent="restoran.menu_root"/>
+    <menuitem name="Menu 2" id="restoran.menu_2" parent="restoran.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="restoran.menu_1_list" parent="restoran.menu_1"
+              action="restoran.action_window"/>
+    <menuitem name="Server to list" id="restoran" parent="restoran.menu_2"
+              action="restoran.action_server"/>
+-->
+  </data>
+</odoo>

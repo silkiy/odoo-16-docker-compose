@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+
+        <!-- Form view for ekstrakurikuler -->
+        <record id="view_ekstrakurikuler_form" model="ir.ui.view">
+            <field name="name">ekstrakurikuler.form</field>
+            <field name="model">ekstrakurikuler</field>
+            <field name="arch" type="xml">
+                <form string="Ekstrakurikuler">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama Ekstrakurikuler"/>
+                            <field name="deskripsi" string="Deskripsi"/>
+                            <field name="pembina_id" string="Pembina"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for ekstrakurikuler -->
+        <record id="view_ekstrakurikuler_tree" model="ir.ui.view">
+            <field name="name">ekstrakurikuler.tree</field>
+            <field name="model">ekstrakurikuler</field>
+            <field name="arch" type="xml">
+                <tree string="Ekstrakurikuler">
+                    <field name="name" string="Nama Ekstrakurikuler"/>
+                    <field name="deskripsi" string="Deskripsi"/>
+                    <field name="pembina_id" string="Pembina"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the ekstrakurikuler form -->
+        <record id="action_ekstrakurikuler" model="ir.actions.act_window">
+            <field name="name">Ekstrakurikuler</field>
+            <field name="res_model">ekstrakurikuler</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_ekstrakurikuler_tree"/>
+        </record>
+
+        <!-- Menu item for ekstrakurikuler -->
+        <menuitem id="ekstrakurikuler_menu_act" name="Ekstrakurikuler" parent="master_menu_categ" action="action_ekstrakurikuler" sequence="8"/>
+
+    </data>
+</odoo>

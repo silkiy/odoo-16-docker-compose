@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_food_order_tree" model="ir.ui.view">
+        <field name="name">restaurant.food.order.tree</field>
+        <field name="model">restaurant.food.order</field>
+        <field name="arch" type="xml">
+            <tree string="Food Orders">
+                <field name="table_id"/>
+                <field name="order_time"/>
+                <field name="total_price"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_food_order_form" model="ir.ui.view">
+        <field name="name">restaurant.food.order.form</field>
+        <field name="model">restaurant.food.order</field>
+        <field name="arch" type="xml">
+            <form string="Food Order">
+                <sheet>
+                    <group>
+                        <field name="table_id"/>
+                        <field name="order_time" readonly="1"/>
+                        <field name="menu_item_ids" widget="many2many_tags"/>
+                        <field name="total_price" readonly="1"/>
+                        <field name="state" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_confirm_order" type="object" string="Confirm Order" states="draft" class="btn-primary"/>
+                        <button name="action_serve_order" type="object" string="Serve Order" states="confirmed" class="btn-success"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="restoran_menu_root" name="Restoran" sequence="1"/>
+    <menuitem id="resto_menu_categ" name="Menu" parent="restoran_menu_root" sequence="1"/>
+    <menuitem id="menu_item_menu" name="Menu Item" parent="resto_menu_categ" action="training_session_action" sequence="2"/>
+
+</odoo>

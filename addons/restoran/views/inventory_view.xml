@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_kitchen_inventory_tree" model="ir.ui.view">
+        <field name="name">restaurant.kitchen.inventory.tree</field>
+        <field name="model">restaurant.kitchen.inventory</field>
+        <field name="arch" type="xml">
+            <tree string="Kitchen Inventory">
+                <field name="ingredient_name"/>
+                <field name="stock_quantity"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_kitchen_inventory_form" model="ir.ui.view">
+        <field name="name">restaurant.kitchen.inventory.form</field>
+        <field name="model">restaurant.kitchen.inventory</field>
+        <field name="arch" type="xml">
+            <form string="Kitchen Inventory">
+                <sheet>
+                    <group>
+                        <field name="ingredient_name"/>
+                        <field name="stock_quantity"/>
+                        <field name="minimum_quantity"/>
+                        <field name="status" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

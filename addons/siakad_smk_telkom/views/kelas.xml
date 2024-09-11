@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+        <!-- Form view for kelas -->
+        <record id="view_kelas_form" model="ir.ui.view">
+            <field name="name">kelas.form</field>
+            <field name="model">kelas</field>
+            <field name="arch" type="xml">
+                <form string="Kelas">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama"/>
+                            <field name="jenjang" string="Jenjang"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for kelas -->
+        <record id="view_kelas_tree" model="ir.ui.view">
+            <field name="name">kelas.tree</field>
+            <field name="model">kelas</field>
+            <field name="arch" type="xml">
+                <tree string="Kelas">
+                    <field name="name" string="Nama"/>
+                    <field name="jenjang" string="Jenjang"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the kelas form -->
+        <record id="action_kelas" model="ir.actions.act_window">
+            <field name="name">Kelas</field>
+            <field name="res_model">kelas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kelas_tree"/>
+        </record>
+
+        <!-- Menu item for kelas -->
+        <menuitem id="kelas_menu_act" name="Kelas" parent="master_menu_categ" action="action_kelas" sequence="2"/>
+
+    </data>
+</odoo>

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class Peserta(models.Model):
     _name = 'peserta'
@@ -13,3 +13,13 @@ class Peserta(models.Model):
     is_menikah = fields.Boolean(string='Sudah Menikah')
     nama_pasangan = fields.Char(string='Nama Pasangan')
     hp_pasangan = fields.Char(string='HP Pasangan')
+    hobby_id = fields.Many2many(comodel_name='hobby', string='Hobby')
+    
+
+    no_peserta = fields.Char(string='No Peserta', readonly=True)
+
+    @api.model
+    def create(self, vals):
+        vals['no_peserta'] = self.env['ir.sequence'].next_by_code('peserta')
+        return super(Peserta, self).create(vals)
+

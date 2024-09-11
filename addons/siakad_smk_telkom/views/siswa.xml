@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+        <!-- Form view for siswa -->
+        <record id="view_siswa_form" model="ir.ui.view">
+            <field name="name">siswa.form</field>
+            <field name="model">siswa</field>
+            <field name="arch" type="xml">
+                <form string="Siswa">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nama"/>
+                            <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                            <field name="tempat_lahir" string="Tempat Lahir"/>
+                            <field name="tanggal_lahir" string="Tanggal Lahir"/>
+                            <field name="alamat" string="Alamat"/>
+                            <field name="no_hp" string="No HP"/>
+                            <field name="email" string="Email"/>
+                            <field name="orangtua_id" string="Orangtua"/>
+                        </group>
+                    </sheet>
+                    <footer>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for siswa -->
+        <record id="view_siswa_tree" model="ir.ui.view">
+            <field name="name">siswa.tree</field>
+            <field name="model">siswa</field>
+            <field name="arch" type="xml">
+                <tree string="Siswa">
+                    <field name="name" string="Nama"/>
+                    <field name="jenis_kelamin" string="Jenis Kelamin"/>
+                    <field name="no_hp" string="No HP"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action to open the siswa form -->
+        <record id="action_siswa" model="ir.actions.act_window">
+            <field name="name">Siswa</field>
+            <field name="res_model">siswa</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_siswa_tree"/>
+        </record>
+
+        <!-- Menu item for siswa -->
+        <menuitem id="siswa_menu_act" name="Siswa" parent="master_menu_categ" action="action_siswa" sequence="4"/>
+
+    </data>
+</odoo>
